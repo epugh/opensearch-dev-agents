@@ -3,7 +3,7 @@ Create a report of OpenSearch-project repository active maintainers who are not 
 ## Data sources
 
 - **Maintainer inactivity**: `maintainer-inactivity-*` indices on the OpenSearch metrics cluster at `metrics.opensearch.org`. Use the Dashboards console proxy. Fields relevant here: `repository`, `github_login`, `inactive` (bool, stored as 0/1), `event_type` (text; use `event_type.keyword` for aggregations), `current_date` (a date field — `max` returns epoch-millis, e.g. `1780531226685`).
-- **List of members**: Use the GH CLI to request all members of Opensearch-project
+- **List of members**: all members of the OpenSearch-project org via the `gh` CLI — see the `gh.md` steering file for the exact command.
 
 ## Method
 
