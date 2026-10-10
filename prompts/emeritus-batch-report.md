@@ -71,12 +71,22 @@ The report only identifies and batches candidates — it does not open PRs by it
 5. Edit `.github/CODEOWNERS` (if the login appears there): remove `@{login}`.
 6. Commit with DCO sign-off (`git commit -s`) using message `Update maintainer status for {login}`.
 7. Push the branch to the user's fork and open the PR against `opensearch-project/{repo}:main` (or the repo's actual default branch) with `gh pr create`:
-   - **Title**: `Propose moving @{login} to Emeritus`
+   - **Title**: `Propose moving @{login} to Emeritus status`
    - **Dashboard link**: Substitute the target repository name for `{repo}` in the URL below. The encoded query filters the dashboard to `repository.keyword: "{repo}"`; keep the existing tenant and time range.
    - **Body**:
      ```
-     Hey @{login}, we see you haven't used your maintainer privileges in the [past year](https://metrics.opensearch.org/_dashboards/app/dashboards?security_tenant=global#/view/30fedc30-9ae2-11ef-a168-f19b1bbc360c?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-30d,to:now))&_a=(description:'Shows%20data%20about%20the%20activity%20of%20maintainers%20in%20the%20OpenSearch%20Project(since%2010-12-24,%20and%20the%20technical-steering%20repo%20since%2011-7-24).%20',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:'repository.keyword:%22{repo}%22'),timeRestore:!t,title:'OpenSearch%20Maintainer%20Dashboard',viewMode:view)) for this repo.
-     If you plan on continuing to contribute, please respond here and close this PR. Otherwise, per our [inactivity policy](https://github.com/opensearch-project/technical-steering/blob/main/policies/RESPONSIBILITIES.md#inactivity) you'll be moved to emeritus, but you can move back to active status at any time.
+   Hey @{login}, we noticed you haven't used your maintainer privileges in this repository over the past year. Per the OpenSearch Project [inactivity policy](https://github.com/opensearch-project/technical-steering/blob/main/policies/RESPONSIBILITIES.md#inactivity), maintainers inactive for 12 months or more are moved to emeritus status.
+   
+   **If you plan to continue contributing as a maintainer**, please respond here and close this PR and no further action is needed.
+   
+   Otherwise, this PR will move you to the emeritus list. Emeritus status is not permanent: you can return to active maintainer status at any time by
+   expressing interest to the current maintainers.
+   
+   **Existing maintainers**: Please merge this PR once @{GITHUB_HANDLE} confirms they do not plan to use their maintainer privileges, or after 7 days with no response. If neither maintainers nor @{GITHUB_HANDLE} take any action within 7 days, a member of the [admin team](https://github.com/orgs/opensearch-project/teams/admin) will merge it.
+   
+   ### Activity data
+   
+   This determination is based on the [OpenSearch Maintainer Dashboard](https://metrics.opensearch.org/_dashboards/app/dashboards#/view/30fedc30-9ae2-11ef-a168-f19b1bbc360c) (filter by repository: `{repo}`). If you believe the activity data is mistaken, please say so here so we can investigate before merging.
      ```
 8. This is a visible, real action against a real person's status — always confirm the planned diff and PR text with the user before pushing/opening the PR, even when working through a batch.
 9. After opening the PR, please update the gist to track the PR being created.
